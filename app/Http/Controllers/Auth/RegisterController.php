@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Nationality;
+Use App\Ethnicity;
 
 class RegisterController extends Controller
 {
@@ -78,8 +79,11 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $nationalities = new Nationality;
-        return view('auth.register', ['nationalities' => $nationalities->nationalityCollection()]);
+        return view('auth.register', ['nationalities' => Nationality::nationalityCollection(), 
+                                      'ethnicities' => Ethnicity::ethnicityCollection()
+                                     ]
+                   );
     }
 
-}
+
+}    

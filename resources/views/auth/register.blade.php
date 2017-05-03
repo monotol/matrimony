@@ -96,6 +96,27 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('ethnicity') ? ' has-error' : '' }}">
+                            <label for="ethnicity" class="col-md-4 control-label">Ethnicity</label>
+
+                            <div class="col-md-6">
+
+                                <select id="ethnicity" class="form-control" name="ethnicity" required>
+                                    @foreach ($ethnicities as $ethnicity)
+
+                                        <option @if (old('ethnicity')) == {{$ethnicity}} selected @endif value="{{$ethnicity}}" >{{$ethnicity}}</option>
+                                    @endforeach     
+
+                                </select>
+
+                                @if ($errors->has('ethnicity'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ethnicity') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('nationality') ? ' has-error' : '' }}">
                             <label for="nationality" class="col-md-4 control-label">Nationality</label>
 
