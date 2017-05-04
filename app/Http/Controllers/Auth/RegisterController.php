@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Nationality;
 Use App\Ethnicity;
+Use App\Race;
 
 class RegisterController extends Controller
 {
@@ -80,7 +81,8 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         return view('auth.register', ['nationalities' => Nationality::nationalityCollection(), 
-                                      'ethnicities' => Ethnicity::ethnicityCollection()
+                                      'ethnicities' => Ethnicity::ethnicityCollection(),
+                                      'racial_groups' => Race::raceCollection(),
                                      ]
                    );
     }

@@ -96,16 +96,46 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('racial_group') ? ' has-error' : '' }}">
+                            <label for="racial_group" class="col-md-4 control-label">Racial Group</label>
+
+                            <div class="col-md-6">
+
+                                <select id="racial_group" class="form-control" name="racial_group" required>
+                                    @isset($racial_groups)    
+                                        @foreach ($racial_groups as $racial_group => $member)
+                                            <optgroup label="{{$racial_group}}">
+                                               @foreach ($racial_group as $group)
+                                                    <option @if (old('racial_group')) == {{$group}} selected @endif value="{{$group}}" >{{$group}}
+                                                    </option> 
+                                               @endforeach     
+                                            </optgroup>
+                                            
+                                        @endforeach
+                                    @endisset         
+
+                                </select>
+
+                                @if ($errors->has('racial_group'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('racial_group') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('ethnicity') ? ' has-error' : '' }}">
                             <label for="ethnicity" class="col-md-4 control-label">Ethnicity</label>
 
                             <div class="col-md-6">
 
                                 <select id="ethnicity" class="form-control" name="ethnicity" required>
-                                    @foreach ($ethnicities as $ethnicity)
+                                    @isset($ethnicities)
+                                        @foreach ($ethnicities as $ethnicity)
 
-                                        <option @if (old('ethnicity')) == {{$ethnicity}} selected @endif value="{{$ethnicity}}" >{{$ethnicity}}</option>
-                                    @endforeach     
+                                            <option @if (old('ethnicity')) == {{$ethnicity}} selected @endif value="{{$ethnicity}}" >{{$ethnicity}}</option>
+                                        @endforeach
+                                    @endisset         
 
                                 </select>
 
@@ -123,10 +153,12 @@
                             <div class="col-md-6">
 
                                 <select id="nationality" class="form-control" name="nationality" required>
-                                    @foreach ($nationalities as $nationality)
+                                    @isset($nationalities)    
+                                        @foreach ($nationalities as $nationality)
 
-                                        <option @if (old('nationality')) == {{$nationality}} selected @endif value="{{$nationality}}" >{{$nationality}}</option>
-                                    @endforeach     
+                                            <option @if (old('nationality')) == {{$nationality}} selected @endif value="{{$nationality}}" >{{$nationality}}</option>
+                                        @endforeach
+                                    @endisset         
 
                                 </select>
 
@@ -144,6 +176,7 @@
                             <div class="col-md-6">
 
                                 <select id="country_of_origin" class="form-control" name="country_of_origin" required>
+                                    {{abort_unless(Countries::getList('en'), 403)}}
                                     @foreach (Countries::getList('en') as $country)
 
                                         <option @if (old('country_of_origin')) == {{$country}} selected @endif value="{{$country}}" >{{$country}}</option>

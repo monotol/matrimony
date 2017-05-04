@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->date('date_of_birth');
             $table->integer('age'); 
             $table->enum('gender', ['male','female']);
+            $table->string('racial_group');
             $table->string('ethnicity');
             $table->string('nationality');
             $table->string('country_of_origin');
