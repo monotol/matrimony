@@ -102,13 +102,14 @@
                             <div class="col-md-6">
 
                                 <select id="racial_group" class="form-control" name="racial_group" required>
-                                    @isset($racial_groups)    
-                                        @foreach ($racial_groups as $racial_group => $member)
-                                            <optgroup label="{{$racial_group}}">
-                                               @foreach ($racial_group as $group)
+                                    @isset($racial_groups)  {{-- main collection --}}  
+                                        @foreach ($racial_groups->keys() as $racial_group)
+                                            <optgroup label="{{$racial_group}}">  {{-- then use each key to get its corresponding value (a collection)   
+                                                                                       from the main collection and iterate over each collection to get the option values --}}
+                                               @foreach ($racial_groups->get($racial_group) as $group)
                                                     <option @if (old('racial_group')) == {{$group}} selected @endif value="{{$group}}" >{{$group}}
                                                     </option> 
-                                               @endforeach     
+                                               @endforeach    
                                             </optgroup>
                                             
                                         @endforeach

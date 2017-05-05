@@ -25,8 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('ethnicity');
             $table->string('nationality');
             $table->string('country_of_origin');
+            $table->string('country_of_residence');
             $table->string('city_of_residence'); 
-            $table->string('country_of_residence'); 
             $table->integer('number_of_children'); 
             $table->integer('number_of_dependent_children'); 
             $table->string('marital_status');    
