@@ -6,11 +6,16 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "commerceguys/addressing": "^0.8.4",
+        "commerceguys/intl": "^0.7.4",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4",
         "monarobase/country-list": "^2.0",
-        "nesbot/carbon": "^1.22"
+        "nesbot/carbon": "^1.22",
+        "symfony/form": "^3.2",
+        "symfony/intl": "^3.2",
+        "symfony/validator": "^3.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

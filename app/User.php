@@ -14,10 +14,19 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+   // protected $fillable = [];
+    
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [];
 
+    protected $dates = [
+        'date_of_birth', 'reversion_date',
+    ];
+    
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -26,6 +35,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    /*protected $casts = [
+        'language' => 'array',
+        'nationalities' => 'array',
+    ];*/
+
 
     public function questions() 
 

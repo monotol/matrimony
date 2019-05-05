@@ -8,28 +8,39 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+   {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/css/mdb.min.css"> --}}
+    
+    @include('styles.app')
+    
+    @yield('style')
+    
     <!-- Scripts -->
-    <script>
+    {{--<script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
-    </script>
+    </script>--}}
 
     <script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
+  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js"></script>
 
+ @yield('title')
 
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top  navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -80,6 +91,8 @@
                                 </ul>
                             </li>
                         @endif
+                        <li><a href="{{ url('/about') }}">About</a></li>
+                        <li><a href="{{ url('/contact') }}">Contact Us</a></li>
                     </ul>
                 </div>
             </div>

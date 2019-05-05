@@ -32,7 +32,7 @@ class Race extends Model
 
                              'Latin' => ['Argentine', 'Bolivian', 'Brazilian', 'Chilean', 'Colombian', 'Costa Rican', 'Cuban', 'Dominican', 
                                          'Ecuadorian', 'El Salvadoran', 'Guatemalan', 'Haitian', 'Honduran', 'Mexican', 'Nicaraguan', 'Panamanian', 
-                                         'Paraguayan', 'Peruvian', 'Puerto Rican', 'Salvadoran', 'Uruguayan', 'Venezuelan',
+                                         'Paraguayan', 'Peruvian', 'Puerto Rican', 'Salvadoran', 'Uruguayan', 'Venezuelan', 'Other Latin',
                                         ],
                             ];
 

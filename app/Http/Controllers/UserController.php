@@ -3,9 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
+   
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+   
+   
+   
     /**
      * Display a listing of the resource.
      *
@@ -43,9 +57,20 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
+        $user = Auth::user();
+        //dd(unserialize($user->language));
+        /**foreach($user as $k => $v) {
+            $data[$k] = $v;
+        }**/
+        //dd($data);
+        //$Carbon = new Carbon();
+        $user->language = unserialize($user->language);
+        $user->nationality = unserialize($user->nationality);
+        $data = ['name' => $user->first_name, 'user' => $user, ];
+        return view('site.profile', $data);
     }
 
     /**
